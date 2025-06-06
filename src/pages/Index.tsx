@@ -1,13 +1,18 @@
+
 import { useEffect } from 'react';
 import { ArrowRight, Users, Code, MapPin, Github, Youtube, Linkedin, Mail, Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSelector from '../components/LanguageSelector';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselApi } from '../components/ui/carousel';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const { t } = useLanguage();
 
   // Intersection Observer for animations
@@ -32,12 +37,40 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Carousel setup and auto-play
+  useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+
+    setCount(carouselApi.scrollSnapList().length);
+    setCurrent(carouselApi.selectedScrollSnap() + 1);
+
+    carouselApi.on('select', () => {
+      setCurrent(carouselApi.selectedScrollSnap() + 1);
+    });
+
+    // Auto-play functionality
+    const interval = setInterval(() => {
+      if (isAutoPlaying && carouselApi) {
+        carouselApi.scrollNext();
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [carouselApi, isAutoPlaying]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMenuOpen(false);
+  };
+
+  const handleCarouselInteraction = (index: number) => {
+    setIsAutoPlaying(false);
+    carouselApi?.scrollTo(index);
   };
 
   const heroImages = [
@@ -189,7 +222,7 @@ const Index = () => {
               </div>
             </div>
             <div className="relative">
-              <Carousel className="w-full max-w-lg mx-auto">
+              <Carousel className="w-full max-w-lg mx-auto" setApi={setCarouselApi}>
                 <CarouselContent>
                   {heroImages.map((image, index) => (
                     <CarouselItem key={index}>
@@ -204,9 +237,23 @@ const Index = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
               </Carousel>
+              
+              {/* Bullet indicators */}
+              <div className="flex justify-center mt-4 space-x-2">
+                {heroImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleCarouselInteraction(index)}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      current === index + 1 
+                        ? 'bg-primary' 
+                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
