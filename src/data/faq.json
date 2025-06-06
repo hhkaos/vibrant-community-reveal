@@ -1,0 +1,64 @@
+{
+  "faq": [
+    {
+      "id": "how-to-join",
+      "question": {
+        "en": "How can I join the community?",
+        "es": "¿Cómo puedo unirme a la comunidad?",
+        "fr": "Comment puis-je rejoindre la communauté ?",
+        "de": "Wie kann ich der Community beitreten?"
+      },
+      "answer": {
+        "en": "Simply click the \"Request to Join\" button and fill out our application form. We welcome developers of all skill levels!",
+        "es": "Simplemente haz clic en el botón \"Solicitar Unirse\" y completa nuestro formulario de solicitud. ¡Damos la bienvenida a desarrolladores de todos los niveles!",
+        "fr": "Cliquez simplement sur le bouton \"Demander à Rejoindre\" et remplissez notre formulaire de candidature. Nous accueillons les développeurs de tous niveaux !",
+        "de": "Klicken Sie einfach auf die Schaltfläche \"Beitritt Beantragen\" und füllen Sie unser Bewerbungsformular aus. Wir heißen Entwickler aller Erfahrungsstufen willkommen!"
+      }
+    },
+    {
+      "id": "membership-fees",
+      "question": {
+        "en": "Are there any membership fees?",
+        "es": "¿Hay cuotas de membresía?",
+        "fr": "Y a-t-il des frais d'adhésion ?",
+        "de": "Gibt es Mitgliedsbeiträge?"
+      },
+      "answer": {
+        "en": "No, our community is completely free to join. We believe in open and accessible technology education.",
+        "es": "No, nuestra comunidad es completamente gratuita para unirse. Creemos en la educación tecnológica abierta y accesible.",
+        "fr": "Non, notre communauté est entièrement gratuite. Nous croyons en l'éducation technologique ouverte et accessible.",
+        "de": "Nein, unsere Community ist völlig kostenlos beizutreten. Wir glauben an offene und zugängliche Technologiebildung."
+      }
+    },
+    {
+      "id": "programming-languages",
+      "question": {
+        "en": "What programming languages do you focus on?",
+        "es": "¿En qué lenguajes de programación se enfocan?",
+        "fr": "Sur quels langages de programmation vous concentrez-vous ?",
+        "de": "Auf welche Programmiersprachen konzentrieren Sie sich?"
+      },
+      "answer": {
+        "en": "We're language-agnostic! Our community covers everything from web technologies to mobile development, AI, and more.",
+        "es": "¡Somos agnósticos al lenguaje! Nuestra comunidad cubre todo, desde tecnologías web hasta desarrollo móvil, IA y más.",
+        "fr": "Nous sommes agnostiques au langage ! Notre communauté couvre tout, des technologies web au développement mobile, l'IA et plus encore.",
+        "de": "Wir sind sprachagnostisch! Unsere Community deckt alles ab, von Webtechnologien bis hin zu mobiler Entwicklung, KI und mehr."
+      }
+    },
+    {
+      "id": "contribute",
+      "question": {
+        "en": "Can I contribute to your open source projects?",
+        "es": "¿Puedo contribuir a sus proyectos de código abierto?",
+        "fr": "Puis-je contribuer à vos projets open source ?",
+        "de": "Kann ich zu Ihren Open-Source-Projekten beitragen?"
+      },
+      "answer": {
+        "en": "Absolutely! We encourage all members to contribute to our projects, regardless of their experience level.",
+        "es": "¡Absolutamente! Alentamos a todos los miembros a contribuir a nuestros proyectos, independientemente de su nivel de experiencia.",
+        "fr": "Absolument ! Nous encourageons tous les membres à contribuer à nos projets, quel que soit leur niveau d'expérience.",
+        "de": "Absolut! Wir ermutigen alle Mitglieder, zu unseren Projekten beizutragen, unabhängig von ihrem Erfahrungsniveau."
+      }
+    }
+  ]
+} 

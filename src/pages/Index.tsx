@@ -1,10 +1,11 @@
-
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, Users, Code, MapPin, Github, Youtube, Linkedin, Mail, Menu, X, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSelector from '../components/LanguageSelector';
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from '../components/ui/carousel';
+import initiativesData from '../data/initiatives.json';
+import faqData from '../data/faq.json';
+import { fetchMembers, processMemberData } from '../services/members';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +14,18 @@ const Index = () => {
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const { t } = useLanguage();
+  const [members, setMembers] = useState<any[]>([]);
+  const { t, language } = useLanguage();
+
+  // Fetch members data
+  useEffect(() => {
+    const loadMembers = async () => {
+      const contributors = await fetchMembers();
+      const processedMembers = contributors.map(processMemberData);
+      setMembers(processedMembers);
+    };
+    loadMembers();
+  }, []);
 
   // Intersection Observer for animations
   useEffect(() => {
@@ -80,37 +92,19 @@ const Index = () => {
     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
   ];
 
-  const initiatives = [
-    {
-      title: t('initiatives.project1.title'),
-      description: t('initiatives.project1.description'),
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop"
-    },
-    {
-      title: t('initiatives.project2.title'),
-      description: t('initiatives.project2.description'),
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
-    },
-    {
-      title: t('initiatives.project3.title'),
-      description: t('initiatives.project3.description'),
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=300&fit=crop"
-    },
-    {
-      title: t('initiatives.project4.title'),
-      description: t('initiatives.project4.description'),
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop"
-    }
-  ];
+  const processedInitiatives = initiativesData.initiatives.map(initiative => ({
+    ...initiative,
+    title: initiative.title[language],
+    description: initiative.description[language]
+  }));
 
-  const teamMembers = [
-    { name: t('people.member1.name'), role: t('people.member1.role'), avatar: "SC" },
-    { name: t('people.member2.name'), role: t('people.member2.role'), avatar: "MR" },
-    { name: t('people.member3.name'), role: t('people.member3.role'), avatar: "AP" },
-    { name: t('people.member4.name'), role: t('people.member4.role'), avatar: "DK" }
-  ];
+  const processedFaqItems = faqData.faq.map(faq => ({
+    ...faq,
+    question: faq.question[language],
+    answer: faq.answer[language]
+  }));
 
-  const navigationItems = [
+  const navItems = [
     { name: t('nav.home'), id: 'home' },
     { name: t('nav.initiatives'), id: 'initiatives' },
     { name: t('nav.people'), id: 'people' },
@@ -118,25 +112,6 @@ const Index = () => {
     { name: t('nav.newsletters'), id: 'newsletters' },
     { name: t('nav.faq'), id: 'faq' },
     { name: t('nav.contact'), id: 'contact' }
-  ];
-
-  const faqItems = [
-    {
-      question: t('faq.question1'),
-      answer: t('faq.answer1')
-    },
-    {
-      question: t('faq.question2'),
-      answer: t('faq.answer2')
-    },
-    {
-      question: t('faq.question3'),
-      answer: t('faq.answer3')
-    },
-    {
-      question: t('faq.question4'),
-      answer: t('faq.answer4')
-    }
   ];
 
   return (
@@ -152,7 +127,7 @@ const Index = () => {
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {navigationItems.map((item) => (
+              {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
@@ -182,7 +157,7 @@ const Index = () => {
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t border-border">
-              {navigationItems.map((item) => (
+              {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
@@ -273,7 +248,7 @@ const Index = () => {
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {initiatives.map((initiative, index) => (
+            {processedInitiatives.map((initiative, index) => (
               <div
                 key={index}
                 className="bg-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
@@ -306,16 +281,30 @@ const Index = () => {
               {t('people.description')}
             </p>
           </div>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="text-center group">
-                <div className="relative mx-auto mb-4 w-24 h-24 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-lg group-hover:scale-110 transition-transform duration-300">
-                  {member.avatar}
-                  <div className="absolute inset-0 rounded-full bg-primary/20 group-hover:animate-pulse"></div>
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">{member.name}</h3>
-                <p className="text-muted-foreground text-sm">{member.role}</p>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {members.map((member, index) => (
+              <div
+                key={index}
+                className="bg-card rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <a
+                  href={member.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden hover:scale-105 transition-transform duration-300">
+                    <img
+                      src={member.avatar}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-card-foreground hover:text-primary transition-colors">
+                    {member.name}
+                  </h3>
+                </a>
               </div>
             ))}
           </div>
@@ -369,7 +358,7 @@ const Index = () => {
           </div>
           
           <div className="max-w-3xl mx-auto space-y-6">
-            {faqItems.map((faq, index) => (
+            {processedFaqItems.map((faq, index) => (
               <div key={index} className="bg-card rounded-lg p-6 shadow-sm">
                 <h3 className="text-lg font-semibold text-card-foreground mb-2">
                   {faq.question}
@@ -411,18 +400,17 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t('contact.title')}
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             {t('contact.description')}
           </p>
-          <button className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors">
-            <Mail className="mr-2 h-5 w-5" />
+          <button className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors">
             {t('contact.btn')}
           </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-muted py-12 border-t border-border">
+      <footer className="bg-muted/30 py-12 animate-on-scroll">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
@@ -438,7 +426,7 @@ const Index = () => {
             <div>
               <h3 className="font-semibold text-foreground mb-4">{t('footer.quickLinks')}</h3>
               <div className="space-y-2">
-                {navigationItems.slice(0, 4).map((item) => (
+                {navItems.slice(0, 4).map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
