@@ -3,6 +3,7 @@ import { ArrowRight, Users, Code, MapPin, Github, Youtube, Linkedin, Mail, Menu,
 import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSelector from '../components/LanguageSelector';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,6 +39,13 @@ const Index = () => {
     }
     setIsMenuOpen(false);
   };
+
+  const heroImages = [
+    "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
+  ];
 
   const initiatives = [
     {
@@ -181,12 +189,24 @@ const Index = () => {
               </div>
             </div>
             <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop"
-                alt="Tech community collaboration"
-                className="rounded-2xl shadow-2xl w-full h-auto"
-              />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/20 to-transparent"></div>
+              <Carousel className="w-full max-w-lg mx-auto">
+                <CarouselContent>
+                  {heroImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="relative">
+                        <img
+                          src={image}
+                          alt={`Tech community collaboration ${index + 1}`}
+                          className="rounded-2xl shadow-2xl w-full h-auto"
+                        />
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/20 to-transparent"></div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
             </div>
           </div>
         </div>
