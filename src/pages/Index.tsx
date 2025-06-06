@@ -1,11 +1,13 @@
-
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { ArrowRight, Users, Code, MapPin, Github, Youtube, Linkedin, Mail, Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSelector from '../components/LanguageSelector';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const { t } = useLanguage();
 
   // Intersection Observer for animations
   useEffect(() => {
@@ -39,42 +41,61 @@ const Index = () => {
 
   const initiatives = [
     {
-      title: "Open Source Projects",
-      description: "Contributing to and maintaining various open source projects that benefit the entire tech community.",
+      title: t('initiatives.project1.title'),
+      description: t('initiatives.project1.description'),
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop"
     },
     {
-      title: "Tech Workshops",
-      description: "Regular hands-on workshops covering the latest technologies and best practices in software development.",
+      title: t('initiatives.project2.title'),
+      description: t('initiatives.project2.description'),
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
     },
     {
-      title: "Mentorship Program",
-      description: "Connecting experienced developers with newcomers to foster growth and knowledge sharing.",
+      title: t('initiatives.project3.title'),
+      description: t('initiatives.project3.description'),
       image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=300&fit=crop"
     },
     {
-      title: "Innovation Lab",
-      description: "Experimental space for testing new technologies and building proof-of-concept applications.",
+      title: t('initiatives.project4.title'),
+      description: t('initiatives.project4.description'),
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop"
     }
   ];
 
   const teamMembers = [
-    { name: "Sarah Chen", role: "Community Lead", avatar: "SC" },
-    { name: "Marcus Rodriguez", role: "Tech Coordinator", avatar: "MR" },
-    { name: "Aisha Patel", role: "Workshop Organizer", avatar: "AP" },
-    { name: "David Kim", role: "Mentorship Director", avatar: "DK" }
+    { name: t('people.member1.name'), role: t('people.member1.role'), avatar: "SC" },
+    { name: t('people.member2.name'), role: t('people.member2.role'), avatar: "MR" },
+    { name: t('people.member3.name'), role: t('people.member3.role'), avatar: "AP" },
+    { name: t('people.member4.name'), role: t('people.member4.role'), avatar: "DK" }
   ];
 
   const navigationItems = [
-    { name: 'Home', id: 'home' },
-    { name: 'Initiatives', id: 'initiatives' },
-    { name: 'People', id: 'people' },
-    { name: 'Communities', id: 'communities' },
-    { name: 'Newsletters', id: 'newsletters' },
-    { name: 'FAQ', id: 'faq' },
-    { name: 'Contact', id: 'contact' }
+    { name: t('nav.home'), id: 'home' },
+    { name: t('nav.initiatives'), id: 'initiatives' },
+    { name: t('nav.people'), id: 'people' },
+    { name: t('nav.communities'), id: 'communities' },
+    { name: t('nav.newsletters'), id: 'newsletters' },
+    { name: t('nav.faq'), id: 'faq' },
+    { name: t('nav.contact'), id: 'contact' }
+  ];
+
+  const faqItems = [
+    {
+      question: t('faq.question1'),
+      answer: t('faq.answer1')
+    },
+    {
+      question: t('faq.question2'),
+      answer: t('faq.answer2')
+    },
+    {
+      question: t('faq.question3'),
+      answer: t('faq.answer3')
+    },
+    {
+      question: t('faq.question4'),
+      answer: t('faq.answer4')
+    }
   ];
 
   return (
@@ -101,16 +122,20 @@ const Index = () => {
                   {item.name}
                 </button>
               ))}
+              <LanguageSelector />
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            <div className="flex items-center space-x-2 md:hidden">
+              <LanguageSelector />
+              <button
+                className="p-2"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Navigation */}
@@ -136,24 +161,22 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
-                Building the Future
-                <span className="text-primary block">Together</span>
+                {t('hero.title')}
+                <span className="text-primary block">{t('hero.titleHighlight')}</span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Join our vibrant tech community where developers, designers, and innovators collaborate 
-                to create amazing projects, share knowledge, and grow together. We believe in the power 
-                of open source and collective learning.
+                {t('hero.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => scrollToSection('initiatives')}
                   className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
                 >
-                  Explore Initiatives
+                  {t('hero.exploreBtn')}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </button>
                 <button className="inline-flex items-center justify-center px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors">
-                  Request to Join
+                  {t('hero.joinBtn')}
                 </button>
               </div>
             </div>
@@ -176,9 +199,9 @@ const Index = () => {
       <section id="initiatives" className="py-20 bg-muted/30 animate-on-scroll">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Initiatives</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('initiatives.title')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover the various projects and programs that drive our community forward
+              {t('initiatives.description')}
             </p>
           </div>
           
@@ -211,9 +234,9 @@ const Index = () => {
       <section id="people" className="py-20 animate-on-scroll">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our People</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('people.title')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Meet the amazing individuals who make our community thrive
+              {t('people.description')}
             </p>
           </div>
 
@@ -238,21 +261,19 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Global Communities
+                {t('communities.title')}
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Our community spans across the globe, connecting developers and tech enthusiasts 
-                from different countries and cultures. Join local chapters, participate in 
-                regional events, and collaborate on international projects.
+                {t('communities.description')}
               </p>
               <div className="flex items-center space-x-4 text-muted-foreground">
                 <div className="flex items-center">
                   <MapPin className="h-5 w-5 mr-2 text-primary" />
-                  <span>50+ Cities</span>
+                  <span>{t('communities.cities')}</span>
                 </div>
                 <div className="flex items-center">
                   <Users className="h-5 w-5 mr-2 text-primary" />
-                  <span>10,000+ Members</span>
+                  <span>{t('communities.members')}</span>
                 </div>
               </div>
             </div>
@@ -273,32 +294,15 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Frequently Asked Questions
+              {t('faq.title')}
             </h2>
             <p className="text-lg text-muted-foreground">
-              Get answers to common questions about our community
+              {t('faq.description')}
             </p>
           </div>
           
           <div className="max-w-3xl mx-auto space-y-6">
-            {[
-              {
-                question: "How can I join the community?",
-                answer: "Simply click the 'Request to Join' button and fill out our application form. We welcome developers of all skill levels!"
-              },
-              {
-                question: "Are there any membership fees?",
-                answer: "No, our community is completely free to join. We believe in open and accessible technology education."
-              },
-              {
-                question: "What programming languages do you focus on?",
-                answer: "We're language-agnostic! Our community covers everything from web technologies to mobile development, AI, and more."
-              },
-              {
-                question: "Can I contribute to your open source projects?",
-                answer: "Absolutely! We encourage all members to contribute to our projects, regardless of their experience level."
-              }
-            ].map((faq, index) => (
+            {faqItems.map((faq, index) => (
               <div key={index} className="bg-card rounded-lg p-6 shadow-sm">
                 <h3 className="text-lg font-semibold text-card-foreground mb-2">
                   {faq.question}
@@ -316,19 +320,19 @@ const Index = () => {
       <section id="newsletters" className="py-20 bg-muted/30 animate-on-scroll">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Stay Updated
+            {t('newsletters.title')}
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Subscribe to our newsletter to get the latest updates on events, projects, and community news
+            {t('newsletters.description')}
           </p>
           <div className="max-w-md mx-auto flex gap-4">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder={t('newsletters.placeholder')}
               className="flex-1 px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <button className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors">
-              Subscribe
+              {t('newsletters.subscribeBtn')}
             </button>
           </div>
         </div>
@@ -338,14 +342,14 @@ const Index = () => {
       <section id="contact" className="py-20 animate-on-scroll">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Get In Touch
+            {t('contact.title')}
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Have questions or want to get involved? We'd love to hear from you!
+            {t('contact.description')}
           </p>
           <button className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors">
             <Mail className="mr-2 h-5 w-5" />
-            Contact Us
+            {t('contact.btn')}
           </button>
         </div>
       </section>
@@ -360,12 +364,12 @@ const Index = () => {
                 <span className="text-lg font-bold text-foreground">TechCommunity</span>
               </div>
               <p className="text-muted-foreground text-sm">
-                Building the future of technology together through collaboration, learning, and innovation.
+                {t('footer.description')}
               </p>
             </div>
             
             <div>
-              <h3 className="font-semibold text-foreground mb-4">Quick Links</h3>
+              <h3 className="font-semibold text-foreground mb-4">{t('footer.quickLinks')}</h3>
               <div className="space-y-2">
                 {navigationItems.slice(0, 4).map((item) => (
                   <button
@@ -380,7 +384,7 @@ const Index = () => {
             </div>
             
             <div>
-              <h3 className="font-semibold text-foreground mb-4">Connect With Us</h3>
+              <h3 className="font-semibold text-foreground mb-4">{t('footer.connect')}</h3>
               <div className="flex space-x-4 mb-4">
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
                   <Github className="h-5 w-5" />
@@ -396,14 +400,14 @@ const Index = () => {
                 </a>
               </div>
               <p className="text-xs text-muted-foreground">
-                Licensed under MIT License
+                {t('footer.license')}
               </p>
             </div>
           </div>
           
           <div className="border-t border-border mt-8 pt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              © 2024 TechCommunity. All rights reserved.
+              {t('footer.copyright')}
             </p>
           </div>
         </div>
