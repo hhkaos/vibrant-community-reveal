@@ -170,3 +170,22 @@
     outline-offset: 2px;
   }
 }
+
+
+p a{
+  color: rgb(59, 130, 246);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+#faq p{
+  margin: .5rem 0;  
+}
+#faq ul{
+  margin: .5rem;
+}
+#faq ul li{
+  list-style: circle;
+  margin-left: 1rem;
+  margin-bottom: .5rem;
+}

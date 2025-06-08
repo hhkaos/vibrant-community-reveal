@@ -273,12 +273,20 @@ const Index = () => {
                 <h3 className="text-xl font-semibold text-card-foreground mb-2">
                   <a href={initiative.link} target="_blank" rel="noopener noreferrer">{initiative.title}</a>
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {initiative.description}
-                </p>
+                <div 
+                  className="text-muted-foreground text-sm leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: initiative.description }}
+                />
               </div>
             ))}
           </div>
+          <div className="text-center mt-12">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto"
+              dangerouslySetInnerHTML={{ __html: t('initiatives.proposals') }}
+            >
+            </p>
+          </div>
+          
         </div>
       </section>
 
@@ -409,18 +417,26 @@ const Index = () => {
                   {faq.question}
                 </h3>
                 <p className="text-muted-foreground">
-                  {faq.answer}
+                  <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
                 </p>
               </div>
             ))}
           </div>
+          <div className="mt-8 text-center">
+            <p className="text-muted-foreground"
+              dangerouslySetInnerHTML={{ __html: t('faq.more-questions') }} 
+            >
+            </p>
+          </div>
         </div>
+
+        
       </section>
 
      
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 animate-on-scroll">
+      <section id="contact" className="py-20 animate-on-scroll faq">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t('contact.title')}
@@ -428,9 +444,16 @@ const Index = () => {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             {t('contact.description')}
           </p>
-          <button className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors">
-            {t('contact.btn')}
-          </button>
+          
+
+          <a 
+              href="mailto:communitybuilders.es@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              {t('contact.btn')}
+            </a>
         </div>
       </section>
 
@@ -491,7 +514,7 @@ const Index = () => {
           
           <div className="border-t border-border mt-8 pt-8 text-center">
             <p className="text-sm text-muted-foreground">
-            {t('footer.license')}. {t('footer.copyright')}
+            {t('footer.license')} | <a href="https://github.com/ComBuildersES/ComBuildersES.github.io">{t('footer.sourcecode')}</a>
             </p>
           </div>
         </div>
