@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type Language = 'en' | 'es' | 'fr' | 'de';
@@ -60,6 +59,8 @@ const translations = {
     'people.member3.role': 'Workshop Organizer',
     'people.member4.name': 'David Kim',
     'people.member4.role': 'Mentorship Director',
+    'people.showAll': 'Show All Members',
+    'people.showLess': 'Show Less',
     
     // Communities Section
     'communities.title': 'Global Communities',
@@ -82,7 +83,6 @@ const translations = {
     // Newsletters Section
     'newsletters.title': 'Stay Updated',
     'newsletters.description': 'Subscribe to our newsletter to get the latest updates on events, projects, and community news',
-    'newsletters.placeholder': 'Enter your email',
     'newsletters.subscribeBtn': 'Subscribe',
     
     // Contact Section
@@ -95,7 +95,7 @@ const translations = {
     'footer.quickLinks': 'Quick Links',
     'footer.connect': 'Connect With Us',
     'footer.license': 'Licensed under MIT License',
-    'footer.copyright': '© 2024 TechCommunity. All rights reserved.',
+    'footer.copyright': '2025 Community Builders.',
   },
   es: {
     // Navigation
@@ -103,20 +103,20 @@ const translations = {
     'nav.initiatives': 'Iniciativas',
     'nav.people': 'Personas',
     'nav.communities': 'Comunidades',
-    'nav.newsletters': 'Boletines',
+    'nav.newsletters': 'Novedades',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contacto',
     
     // Hero Section
-    'hero.title': 'Construyendo el Futuro',
-    'hero.titleHighlight': 'Juntos',
-    'hero.description': 'Únete a nuestra vibrante comunidad tecnológica donde desarrolladores, diseñadores e innovadores colaboran para crear proyectos increíbles, compartir conocimiento y crecer juntos. Creemos en el poder del código abierto y el aprendizaje colectivo.',
+    'hero.title': 'Dinamizamos',
+    'hero.titleHighlight': 'Comunidades Tech',
+    'hero.description': 'Somos un colectivo que reúne a personas que dinamizan comunidades tech de habla hispana con el objetivo de ser un lugar de referencia donde se facilite la colaboración y el intercambio de experiencias.',
     'hero.exploreBtn': 'Explorar Iniciativas',
     'hero.joinBtn': 'Solicitar Unirse',
     
     // Initiatives Section
-    'initiatives.title': 'Nuestras Iniciativas',
-    'initiatives.description': 'Descubre los diversos proyectos y programas que impulsan nuestra comunidad',
+    'initiatives.title': 'Nuestras iniciativas',
+    'initiatives.description': 'Proponemos y colaboramos en diferentes proyectos',
     'initiatives.project1.title': 'Proyectos de Código Abierto',
     'initiatives.project1.description': 'Contribuyendo y manteniendo varios proyectos de código abierto que benefician a toda la comunidad tecnológica.',
     'initiatives.project2.title': 'Talleres Tecnológicos',
@@ -127,8 +127,8 @@ const translations = {
     'initiatives.project4.description': 'Espacio experimental para probar nuevas tecnologías y construir aplicaciones de prueba de concepto.',
     
     // People Section
-    'people.title': 'Nuestra Gente',
-    'people.description': 'Conoce a las personas increíbles que hacen prosperar nuestra comunidad',
+    'people.title': 'Quiénes somos',
+    'people.description': 'Estas son las personas que contribuyen en estas iniciativas',
     'people.member1.name': 'Sarah Chen',
     'people.member1.role': 'Líder de Comunidad',
     'people.member2.name': 'Marcus Rodriguez',
@@ -137,12 +137,14 @@ const translations = {
     'people.member3.role': 'Organizadora de Talleres',
     'people.member4.name': 'David Kim',
     'people.member4.role': 'Director de Mentoría',
+    'people.showAll': 'Mostrar todas las personas',
+    'people.showLess': 'Mostrar menos',
     
     // Communities Section
-    'communities.title': 'Comunidades Globales',
-    'communities.description': 'Nuestra comunidad se extiende por todo el mundo, conectando desarrolladores y entusiastas de la tecnología de diferentes países y culturas. Únete a capítulos locales, participa en eventos regionales y colabora en proyectos internacionales.',
-    'communities.cities': '50+ Ciudades',
-    'communities.members': '10,000+ Miembros',
+    'communities.title': 'Comunidades en Español',
+    'communities.description': 'Hemos creado un directorio web que reúne a 500+ comunidades tech en España y otras de habla hispana para que cualquier persona interesada descubra fácilmente las opciones disponibles y encuentre las que se ajustan a sus intereses..',
+    'communities.cities': '300+ Presenciales',
+    'communities.members': '50+ Híbridas y online',
     
     // FAQ Section
     'faq.title': 'Preguntas Frecuentes',
@@ -157,10 +159,9 @@ const translations = {
     'faq.answer4': '¡Absolutamente! Alentamos a todos los miembros a contribuir a nuestros proyectos, independientemente de su nivel de experiencia.',
     
     // Newsletters Section
-    'newsletters.title': 'Mantente Actualizado',
-    'newsletters.description': 'Suscríbete a nuestro boletín para recibir las últimas actualizaciones sobre eventos, proyectos y noticias de la comunidad',
-    'newsletters.placeholder': 'Ingresa tu email',
-    'newsletters.subscribeBtn': 'Suscribirse',
+    'newsletters.title': 'Novedades',
+    'newsletters.description': 'Consulta los boletines mensuales de Community Builders',
+    'newsletters.subscribeBtn': 'Boletines mensuales',
     
     // Contact Section
     'contact.title': 'Ponte en Contacto',
@@ -168,165 +169,11 @@ const translations = {
     'contact.btn': 'Contáctanos',
     
     // Footer
-    'footer.description': 'Construyendo el futuro de la tecnología juntos a través de la colaboración, el aprendizaje y la innovación.',
+    'footer.description': 'Somos un colectivo que reúne a personas que dinamizan comunidades tech de habla hispana con el objetivo de ser un lugar de referencia donde se facilite la colaboración y el intercambio de experiencias.',
     'footer.quickLinks': 'Enlaces Rápidos',
     'footer.connect': 'Conéctate con Nosotros',
-    'footer.license': 'Licenciado bajo Licencia MIT',
-    'footer.copyright': '© 2024 TechCommunity. Todos los derechos reservados.',
-  },
-  fr: {
-    // Navigation
-    'nav.home': 'Accueil',
-    'nav.initiatives': 'Initiatives',
-    'nav.people': 'Personnes',
-    'nav.communities': 'Communautés',
-    'nav.newsletters': 'Bulletins',
-    'nav.faq': 'FAQ',
-    'nav.contact': 'Contact',
-    
-    // Hero Section
-    'hero.title': 'Construire l\'Avenir',
-    'hero.titleHighlight': 'Ensemble',
-    'hero.description': 'Rejoignez notre communauté technologique dynamique où développeurs, designers et innovateurs collaborent pour créer des projets incroyables, partager des connaissances et grandir ensemble. Nous croyons au pouvoir de l\'open source et de l\'apprentissage collectif.',
-    'hero.exploreBtn': 'Explorer les Initiatives',
-    'hero.joinBtn': 'Demander à Rejoindre',
-    
-    // Initiatives Section
-    'initiatives.title': 'Nos Initiatives',
-    'initiatives.description': 'Découvrez les divers projets et programmes qui font avancer notre communauté',
-    'initiatives.project1.title': 'Projets Open Source',
-    'initiatives.project1.description': 'Contribuer et maintenir divers projets open source qui profitent à toute la communauté technologique.',
-    'initiatives.project2.title': 'Ateliers Tech',
-    'initiatives.project2.description': 'Ateliers pratiques réguliers couvrant les dernières technologies et meilleures pratiques en développement logiciel.',
-    'initiatives.project3.title': 'Programme de Mentorat',
-    'initiatives.project3.description': 'Connecter les développeurs expérimentés avec les nouveaux venus pour favoriser la croissance et le partage de connaissances.',
-    'initiatives.project4.title': 'Laboratoire d\'Innovation',
-    'initiatives.project4.description': 'Espace expérimental pour tester de nouvelles technologies et construire des applications de preuve de concept.',
-    
-    // People Section
-    'people.title': 'Notre Équipe',
-    'people.description': 'Rencontrez les personnes formidables qui font prospérer notre communauté',
-    'people.member1.name': 'Sarah Chen',
-    'people.member1.role': 'Chef de Communauté',
-    'people.member2.name': 'Marcus Rodriguez',
-    'people.member2.role': 'Coordinateur Tech',
-    'people.member3.name': 'Aisha Patel',
-    'people.member3.role': 'Organisatrice d\'Ateliers',
-    'people.member4.name': 'David Kim',
-    'people.member4.role': 'Directeur de Mentorat',
-    
-    // Communities Section
-    'communities.title': 'Communautés Mondiales',
-    'communities.description': 'Notre communauté s\'étend à travers le monde, connectant développeurs et passionnés de technologie de différents pays et cultures. Rejoignez des chapitres locaux, participez à des événements régionaux et collaborez sur des projets internationaux.',
-    'communities.cities': '50+ Villes',
-    'communities.members': '10,000+ Membres',
-    
-    // FAQ Section
-    'faq.title': 'Questions Fréquemment Posées',
-    'faq.description': 'Obtenez des réponses aux questions courantes sur notre communauté',
-    'faq.question1': 'Comment puis-je rejoindre la communauté ?',
-    'faq.answer1': 'Cliquez simplement sur le bouton "Demander à Rejoindre" et remplissez notre formulaire de candidature. Nous accueillons les développeurs de tous niveaux !',
-    'faq.question2': 'Y a-t-il des frais d\'adhésion ?',
-    'faq.answer2': 'Non, notre communauté est entièrement gratuite. Nous croyons en l\'éducation technologique ouverte et accessible.',
-    'faq.question3': 'Sur quels langages de programmation vous concentrez-vous ?',
-    'faq.answer3': 'Nous sommes agnostiques au langage ! Notre communauté couvre tout, des technologies web au développement mobile, l\'IA et plus encore.',
-    'faq.question4': 'Puis-je contribuer à vos projets open source ?',
-    'faq.answer4': 'Absolument ! Nous encourageons tous les membres à contribuer à nos projets, quel que soit leur niveau d\'expérience.',
-    
-    // Newsletters Section
-    'newsletters.title': 'Restez Informé',
-    'newsletters.description': 'Abonnez-vous à notre newsletter pour recevoir les dernières mises à jour sur les événements, projets et actualités de la communauté',
-    'newsletters.placeholder': 'Entrez votre email',
-    'newsletters.subscribeBtn': 'S\'abonner',
-    
-    // Contact Section
-    'contact.title': 'Contactez-nous',
-    'contact.description': 'Avez-vous des questions ou voulez-vous vous impliquer ? Nous aimerions avoir de vos nouvelles !',
-    'contact.btn': 'Nous Contacter',
-    
-    // Footer
-    'footer.description': 'Construire l\'avenir de la technologie ensemble grâce à la collaboration, l\'apprentissage et l\'innovation.',
-    'footer.quickLinks': 'Liens Rapides',
-    'footer.connect': 'Connectez-vous avec Nous',
-    'footer.license': 'Sous licence MIT',
-    'footer.copyright': '© 2024 TechCommunity. Tous droits réservés.',
-  },
-  de: {
-    // Navigation
-    'nav.home': 'Startseite',
-    'nav.initiatives': 'Initiativen',
-    'nav.people': 'Menschen',
-    'nav.communities': 'Gemeinschaften',
-    'nav.newsletters': 'Newsletter',
-    'nav.faq': 'FAQ',
-    'nav.contact': 'Kontakt',
-    
-    // Hero Section
-    'hero.title': 'Die Zukunft Bauen',
-    'hero.titleHighlight': 'Gemeinsam',
-    'hero.description': 'Treten Sie unserer lebendigen Tech-Community bei, wo Entwickler, Designer und Innovatoren zusammenarbeiten, um erstaunliche Projekte zu schaffen, Wissen zu teilen und gemeinsam zu wachsen. Wir glauben an die Macht von Open Source und kollektivem Lernen.',
-    'hero.exploreBtn': 'Initiativen Erkunden',
-    'hero.joinBtn': 'Beitritt Beantragen',
-    
-    // Initiatives Section
-    'initiatives.title': 'Unsere Initiativen',
-    'initiatives.description': 'Entdecken Sie die verschiedenen Projekte und Programme, die unsere Community vorantreiben',
-    'initiatives.project1.title': 'Open Source Projekte',
-    'initiatives.project1.description': 'Beitrag und Wartung verschiedener Open-Source-Projekte, die der gesamten Tech-Community zugutekommen.',
-    'initiatives.project2.title': 'Tech Workshops',
-    'initiatives.project2.description': 'Regelmäßige praktische Workshops zu den neuesten Technologien und Best Practices in der Softwareentwicklung.',
-    'initiatives.project3.title': 'Mentoring-Programm',
-    'initiatives.project3.description': 'Erfahrene Entwickler mit Neulingen verbinden, um Wachstum und Wissensaustausch zu fördern.',
-    'initiatives.project4.title': 'Innovationslabor',
-    'initiatives.project4.description': 'Experimenteller Raum zum Testen neuer Technologien und Erstellen von Proof-of-Concept-Anwendungen.',
-    
-    // People Section
-    'people.title': 'Unsere Menschen',
-    'people.description': 'Lernen Sie die erstaunlichen Menschen kennen, die unsere Community gedeihen lassen',
-    'people.member1.name': 'Sarah Chen',
-    'people.member1.role': 'Community-Leiterin',
-    'people.member2.name': 'Marcus Rodriguez',
-    'people.member2.role': 'Tech-Koordinator',
-    'people.member3.name': 'Aisha Patel',
-    'people.member3.role': 'Workshop-Organisatorin',
-    'people.member4.name': 'David Kim',
-    'people.member4.role': 'Mentoring-Direktor',
-    
-    // Communities Section
-    'communities.title': 'Globale Gemeinschaften',
-    'communities.description': 'Unsere Community erstreckt sich über die ganze Welt und verbindet Entwickler und Tech-Enthusiasten aus verschiedenen Ländern und Kulturen. Treten Sie lokalen Kapiteln bei, nehmen Sie an regionalen Veranstaltungen teil und arbeiten Sie an internationalen Projekten mit.',
-    'communities.cities': '50+ Städte',
-    'communities.members': '10,000+ Mitglieder',
-    
-    // FAQ Section
-    'faq.title': 'Häufig Gestellte Fragen',
-    'faq.description': 'Erhalten Sie Antworten auf häufige Fragen zu unserer Community',
-    'faq.question1': 'Wie kann ich der Community beitreten?',
-    'faq.answer1': 'Klicken Sie einfach auf die Schaltfläche "Beitritt Beantragen" und füllen Sie unser Bewerbungsformular aus. Wir heißen Entwickler aller Erfahrungsstufen willkommen!',
-    'faq.question2': 'Gibt es Mitgliedsbeiträge?',
-    'faq.answer2': 'Nein, unsere Community ist völlig kostenlos beizutreten. Wir glauben an offene und zugängliche Technologiebildung.',
-    'faq.question3': 'Auf welche Programmiersprachen konzentrieren Sie sich?',
-    'faq.answer3': 'Wir sind sprachagnostisch! Unsere Community deckt alles ab, von Webtechnologien bis hin zu mobiler Entwicklung, KI und mehr.',
-    'faq.question4': 'Kann ich zu Ihren Open-Source-Projekten beitragen?',
-    'faq.answer4': 'Absolut! Wir ermutigen alle Mitglieder, zu unseren Projekten beizutragen, unabhängig von ihrem Erfahrungsniveau.',
-    
-    // Newsletters Section
-    'newsletters.title': 'Bleiben Sie Informiert',
-    'newsletters.description': 'Abonnieren Sie unseren Newsletter, um die neuesten Updates zu Veranstaltungen, Projekten und Community-News zu erhalten',
-    'newsletters.placeholder': 'E-Mail eingeben',
-    'newsletters.subscribeBtn': 'Abonnieren',
-    
-    // Contact Section
-    'contact.title': 'Kontakt Aufnehmen',
-    'contact.description': 'Haben Sie Fragen oder möchten sich beteiligen? Wir würden gerne von Ihnen hören!',
-    'contact.btn': 'Kontaktieren Sie uns',
-    
-    // Footer
-    'footer.description': 'Die Zukunft der Technologie gemeinsam durch Zusammenarbeit, Lernen und Innovation aufbauen.',
-    'footer.quickLinks': 'Schnelle Links',
-    'footer.connect': 'Verbinden Sie sich mit uns',
-    'footer.license': 'Unter MIT-Lizenz lizenziert',
-    'footer.copyright': '© 2024 TechCommunity. Alle Rechte vorbehalten.',
+    'footer.license': 'Licenciado bajo Apache v2.0 y CC BY 4.0',
+    'footer.copyright': '© 2025 Community Builders',
   }
 };
 

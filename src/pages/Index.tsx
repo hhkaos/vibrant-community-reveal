@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Users, Code, MapPin, Github, Youtube, Linkedin, Mail, Menu, X, ChevronDown } from 'lucide-react';
+import { ArrowRight, Users, Code, MapPin, Github, Youtube, Linkedin, MessageSquare, Mail, Menu, X, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSelector from '../components/LanguageSelector';
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from '../components/ui/carousel';
@@ -15,6 +15,7 @@ const Index = () => {
   const [count, setCount] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [members, setMembers] = useState<any[]>([]);
+  const [showAllMembers, setShowAllMembers] = useState(false);
   const { t, language } = useLanguage();
 
   // Fetch members data
@@ -86,10 +87,10 @@ const Index = () => {
   };
 
   const heroImages = [
-    "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
+    "/images/hero-1.jpg",
+    "/images/hero-2.jpg",
+    "/images/hero-3.jpg",
+    // "/images/hero-4.jpg"
   ];
 
   const processedInitiatives = initiativesData.initiatives.map(initiative => ({
@@ -114,6 +115,8 @@ const Index = () => {
     { name: t('nav.contact'), id: 'contact' }
   ];
 
+  const displayedMembers = showAllMembers ? members : members.slice(0, 8);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -122,7 +125,7 @@ const Index = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
               <Code className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-foreground">TechCommunity</span>
+              <span className="text-xl font-bold text-foreground">Community Builders</span>
             </div>
             
             {/* Desktop Navigation */}
@@ -191,9 +194,14 @@ const Index = () => {
                   {t('hero.exploreBtn')}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </button>
-                <button className="inline-flex items-center justify-center px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors">
+                <a 
+                  href="https://github.com/orgs/ComBuildersES/discussions/categories/novedades"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
+                >
                   {t('hero.joinBtn')}
-                </button>
+                </a>
               </div>
             </div>
             <div className="relative">
@@ -254,14 +262,16 @@ const Index = () => {
                 className="bg-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
               >
                 <div className="mb-4 overflow-hidden rounded-lg">
-                  <img
-                    src={initiative.image}
-                    alt={initiative.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+                  <a href={initiative.link} target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={initiative.image}
+                      alt={initiative.title}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </a>
                 </div>
                 <h3 className="text-xl font-semibold text-card-foreground mb-2">
-                  {initiative.title}
+                  <a href={initiative.link} target="_blank" rel="noopener noreferrer">{initiative.title}</a>
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {initiative.description}
@@ -273,7 +283,7 @@ const Index = () => {
       </section>
 
       {/* People Section */}
-      <section id="people" className="py-20 animate-on-scroll">
+      <section id="people" className="py-20 animate-on-scroll min-h-screen">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('people.title')}</h2>
@@ -283,7 +293,7 @@ const Index = () => {
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {members.map((member, index) => (
+            {displayedMembers.map((member, index) => (
               <div
                 key={index}
                 className="bg-card rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300"
@@ -308,6 +318,17 @@ const Index = () => {
               </div>
             ))}
           </div>
+
+          {members.length > 8 && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => setShowAllMembers(!showAllMembers)}
+                className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                {showAllMembers ? t('people.showLess') : t('people.showAll')}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -334,13 +355,37 @@ const Index = () => {
               </div>
             </div>
             <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=600&h=400&fit=crop"
-                alt="Global tech communities map"
-                className="rounded-2xl shadow-2xl w-full h-auto"
-              />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/20 to-transparent"></div>
+            <a href="https://combuilderses.github.io/communities-directory/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="/images/communities-directory.jpg"
+                  alt="Tech communities map"
+                  className="rounded-2xl shadow-2xl w-full h-auto"
+                />
+              </a>
+              <div className="absolute rounded-2xl bg-gradient-to-t from-primary/20 to-transparent"></div>
             </div>
+          </div>
+        </div>
+      </section>
+
+       {/* Newsletters Section */}
+       <section id="newsletters" className="py-20 bg-muted/30 animate-on-scroll">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            {t('newsletters.title')}
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            {t('newsletters.description')}
+          </p>
+          <div className="max-w-md mx-auto flex gap-4 inline-flex items-center">
+            <a 
+              href="https://github.com/orgs/ComBuildersES/discussions/categories/novedades"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              {t('newsletters.subscribeBtn')}
+            </a>
           </div>
         </div>
       </section>
@@ -372,27 +417,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Newsletters Section */}
-      <section id="newsletters" className="py-20 bg-muted/30 animate-on-scroll">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {t('newsletters.title')}
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            {t('newsletters.description')}
-          </p>
-          <div className="max-w-md mx-auto flex gap-4">
-            <input
-              type="email"
-              placeholder={t('newsletters.placeholder')}
-              className="flex-1 px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            <button className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors">
-              {t('newsletters.subscribeBtn')}
-            </button>
-          </div>
-        </div>
-      </section>
+     
 
       {/* Contact Section */}
       <section id="contact" className="py-20 animate-on-scroll">
@@ -416,7 +441,7 @@ const Index = () => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Code className="h-6 w-6 text-primary" />
-                <span className="text-lg font-bold text-foreground">TechCommunity</span>
+                <span className="text-lg font-bold text-foreground">Community Builders</span>
               </div>
               <p className="text-muted-foreground text-sm">
                 {t('footer.description')}
@@ -441,28 +466,32 @@ const Index = () => {
             <div>
               <h3 className="font-semibold text-foreground mb-4">{t('footer.connect')}</h3>
               <div className="flex space-x-4 mb-4">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
+                <a href="https://github.com/ComBuildersES" className="text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
                   <Github className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="YouTube">
+                <a href="https://www.youtube.com/@ComBuilders_ES" className="text-muted-foreground hover:text-primary transition-colors" aria-label="YouTube">
                   <Youtube className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/combuilders-es/?viewAsMember=true" className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
+                <a href="https://x.com/ComBuilders_ES" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Bluesky">
+                  <X className="h-5 w-5" />
+                </a>
+                <a href="https://bsky.app/profile/communitybuilders.bsky.social" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Bluesky">
+                  <MessageSquare className="h-5 w-5" />
+                </a>
+                <a href="mailto:communitybuilders.es@gmail.com" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
                   <Mail className="h-5 w-5" />
                 </a>
               </div>
-              <p className="text-xs text-muted-foreground">
-                {t('footer.license')}
-              </p>
+              
             </div>
           </div>
           
           <div className="border-t border-border mt-8 pt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              {t('footer.copyright')}
+            {t('footer.license')}. {t('footer.copyright')}
             </p>
           </div>
         </div>

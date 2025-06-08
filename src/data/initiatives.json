@@ -1,94 +1,94 @@
 {
   "initiatives": [
     {
-      "id": "open-source",
+      "id": "meeting-point",
       "title": {
-        "en": "Open Source Projects",
-        "es": "Proyectos de Código Abierto",
-        "fr": "Projets Open Source",
-        "de": "Open Source Projekte"
+        "en": "🗣️ Meeting point",
+        "es": "🗣️ Punto de encuentro"
       },
       "description": {
-        "en": "Contributing to and maintaining various open source projects that benefit the entire tech community.",
-        "es": "Contribuyendo y manteniendo varios proyectos de código abierto que benefician a toda la comunidad tecnológica.",
-        "fr": "Contribuer et maintenir divers projets open source qui profitent à toute la communauté technologique.",
-        "de": "Beitrag und Wartung verschiedener Open-Source-Projekte, die der gesamten Tech-Community zugutekommen."
+        "en": "Facilitate networking (online and in person), the exchange of experiences, and mutual assistance among people who energize communities.",
+        "es": "Facilitar el networking (online y presencial), el intercambio de experiencias y la ayuda mutua entre personas que dinamizan comunidades."
       },
-      "image": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop",
+      "image": "/images/meeting-point.jpg",
       "category": "development",
-      "tags": ["open-source", "collaboration", "community"]
+      "tags": ["open-source", "collaboration", "community"],
+      "link": "https://github.com/ComBuildersES/punto-de-encuentro"
     },
     {
-      "id": "tech-workshops",
+      "id": "communities-directory",
       "title": {
-        "en": "Tech Workshops",
-        "es": "Talleres Tecnológicos",
-        "fr": "Ateliers Tech",
-        "de": "Tech Workshops"
+        "en": "🔍 Communities directory",
+        "es": "🔍 Directorio de comunidades"
       },
       "description": {
-        "en": "Regular hands-on workshops covering the latest technologies and best practices in software development.",
-        "es": "Talleres prácticos regulares que cubren las últimas tecnologías y mejores prácticas en desarrollo de software.",
-        "fr": "Ateliers pratiques réguliers couvrant les dernières technologies et meilleures pratiques en développement logiciel.",
-        "de": "Regelmäßige praktische Workshops zu den neuesten Technologien und Best Practices in der Softwareentwicklung."
+        "en": "Website that brings together more than 500 tech communities in Spain and other Spanish-speaking countries (online).",
+        "es": "Web que reúne +500 comunidades tech de España y otras hispanohablantes (online)."
       },
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+      "image": "/images/communities-directory.jpg",
       "category": "education",
-      "tags": ["workshops", "learning", "hands-on"]
+      "tags": ["workshops", "learning", "hands-on"],
+      "link": "https://github.com/ComBuildersES/communities-directory"
     },
     {
-      "id": "mentorship",
+      "id": "we-chat-with-community-builders",
       "title": {
-        "en": "Mentorship Program",
-        "es": "Programa de Mentoría",
-        "fr": "Programme de Mentorat",
-        "de": "Mentoring-Programm"
+        "en": "🎙️ We chat with community builders",
+        "es": "🎙️ Charlamos con Community Builders"
       },
       "description": {
-        "en": "Connecting experienced developers with newcomers to foster growth and knowledge sharing.",
-        "es": "Conectando desarrolladores experimentados con principiantes para fomentar el crecimiento y el intercambio de conocimientos.",
-        "fr": "Connecter les développeurs expérimentés avec les nouveaux venus pour favoriser la croissance et le partage de connaissances.",
-        "de": "Erfahrene Entwickler mit Neulingen verbinden, um Wachstum und Wissensaustausch zu fördern."
+        "en": "Podcasts and videos to learn more about the people who make up Community Builders and the communities they represent.",
+        "es": "Podcast y vídeos para conocer mejor a las personas que forman Community Builders y las comunidades a las que representan."
       },
-      "image": "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=300&fit=crop",
+      "image": "/images/we-chat-with-community-builders.jpg",
       "category": "community",
-      "tags": ["mentorship", "growth", "knowledge-sharing"]
+      "tags": ["mentorship", "growth", "knowledge-sharing"],
+      "link": "https://github.com/ComBuildersES/charlamos-con-community-builders"
     },
     {
-      "id": "innovation-lab",
+      "id": "awesome-list",
       "title": {
-        "en": "Innovation Lab",
-        "es": "Laboratorio de Innovación",
-        "fr": "Laboratoire d'Innovation",
-        "de": "Innovationslabor"
+        "en": "⚒️ Awesome list",
+        "es": "⚒️ Awesome list"
       },
       "description": {
-        "en": "Experimental space for testing new technologies and building proof-of-concept applications.",
-        "es": "Espacio experimental para probar nuevas tecnologías y construir aplicaciones de prueba de concepto.",
-        "fr": "Espace expérimental pour tester de nouvelles technologies et construire des applications de preuve de concept.",
-        "de": "Experimenteller Raum zum Testen neuer Technologien und Erstellen von Proof-of-Concept-Anwendungen."
+        "en": "Compilation of useful resources for people who manage communities (e.g., tools for managing tickets, social media, receiving funding, shared calendars, etc.).",
+        "es": "Recopilación de recursos útiles para personas que gestionan comunidades (ej: herramientas para gestionar tickets, redes sociales, recibir financiación, calendarios compartidos, ...)."
       },
-      "image": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop",
+      "image": "/images/awesome-list.jpg",
       "category": "innovation",
-      "tags": ["innovation", "experimentation", "poc"]
+      "tags": ["innovation", "experimentation", "poc"],
+      "link": "https://github.com/ComBuildersES/awesome-community-builders"
     },
     {
-      "id": "innovation-lab2",
+      "id": "event-formats",
       "title": {
-        "en": "Innovation Lab",
-        "es": "Laboratorio de Innovación",
-        "fr": "Laboratoire d'Innovation",
-        "de": "Innovationslabor"
+        "en": "💡 Event formats",
+        "es": "💡 Formatos de eventos"
       },
       "description": {
-        "en": "Experimental space for testing new technologies and building proof-of-concept applications.",
-        "es": "Espacio experimental para probar nuevas tecnologías y construir aplicaciones de prueba de concepto.",
-        "fr": "Espace expérimental pour tester de nouvelles technologies et construire des applications de preuve de concept.",
-        "de": "Experimenteller Raum zum Testen neuer Technologien und Erstellen von Proof-of-Concept-Anwendungen."
+        "en": "Compilation of over 20 different event dynamics: open space, coding dojo, peer reviews, round tables, pizza nights, AMA, etc.",
+        "es": "Recopilación con +20 diferentes dinámicas de eventos: open space, coding dojo, peer reviews, mesas redondas, pizza nights, AMA, etc."
       },
-      "image": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop",
+      "image": "/images/event-formats.jpg",
       "category": "innovation",
-      "tags": ["innovation", "experimentation", "poc"]
+      "tags": ["innovation", "experimentation", "poc"],
+      "link": "https://github.com/ComBuildersES/formatos-para-eventos"
+    },
+    {
+      "id": "survey-of-potential-audience",
+      "title": {
+        "en": "📊 Survey of potential audience",
+        "es": "📊 Encuesta a público potencial"
+      },
+      "description": {
+        "en": "Survey and results (open access) to find out how best to reach the target audience of technology communities.",
+        "es": "Encuesta y resultados (en abierto) para saber cómo llegar mejor al público objetivo de las comunidades tecnológicas."
+      },
+      "image": "/images/survey-of-potential-audience.jpg",
+      "category": "innovation",
+      "tags": ["innovation", "experimentation", "poc"],
+      "link": "https://github.com/ComBuildersES/estudio-publico-objetivo"
     }
   ]
 } 

@@ -45,6 +45,10 @@ npm run dev
    - Elimina el código `languages`
    - Elimina el objeto de traducciones 
 
+## Hero images
+
+heroImages
+
 ## Cómo Actualizar las Iniciativas
 
 1. Navega al archivo `src/data/initiatives.json`
