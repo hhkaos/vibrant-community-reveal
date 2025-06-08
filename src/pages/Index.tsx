@@ -189,7 +189,7 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => scrollToSection('initiatives')}
-                  className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors"
                 >
                   {t('hero.exploreBtn')}
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -323,7 +323,7 @@ const Index = () => {
             <div className="text-center mt-8">
               <button
                 onClick={() => setShowAllMembers(!showAllMembers)}
-                className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+                className="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors"
               >
                 {showAllMembers ? t('people.showLess') : t('people.showAll')}
               </button>
@@ -382,7 +382,7 @@ const Index = () => {
               href="https://github.com/orgs/ComBuildersES/discussions/categories/novedades"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+              className="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors"
             >
               {t('newsletters.subscribeBtn')}
             </a>
