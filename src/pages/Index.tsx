@@ -87,9 +87,9 @@ const Index = () => {
   };
 
   const heroImages = [
-    "/images/hero-1.jpg",
-    "/images/hero-2.jpg",
-    "/images/hero-3.jpg",
+    "./images/hero-1.jpg",
+    "./images/hero-2.jpg",
+    "./images/hero-3.jpg",
     // "/images/hero-4.jpg"
   ];
 
@@ -357,7 +357,7 @@ const Index = () => {
             <div className="relative">
             <a href="https://combuilderses.github.io/communities-directory/" target="_blank" rel="noopener noreferrer">
                 <img
-                  src="/images/communities-directory.jpg"
+                  src="./images/communities-directory.jpg"
                   alt="Tech communities map"
                   className="rounded-2xl shadow-2xl w-full h-auto"
                 />

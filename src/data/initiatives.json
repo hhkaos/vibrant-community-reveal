@@ -10,7 +10,7 @@
         "en": "Facilitate networking (online and in person), the exchange of experiences, and mutual assistance among people who energize communities.",
         "es": "Facilitar el networking (online y presencial), el intercambio de experiencias y la ayuda mutua entre personas que dinamizan comunidades."
       },
-      "image": "/images/meeting-point.jpg",
+      "image": "./images/meeting-point.jpg",
       "category": "development",
       "tags": ["open-source", "collaboration", "community"],
       "link": "https://github.com/ComBuildersES/punto-de-encuentro"
@@ -25,7 +25,7 @@
         "en": "Website that brings together more than 500 tech communities in Spain and other Spanish-speaking countries (online).",
         "es": "Web que reúne +500 comunidades tech de España y otras hispanohablantes (online)."
       },
-      "image": "/images/communities-directory.jpg",
+      "image": "./images/communities-directory.jpg",
       "category": "education",
       "tags": ["workshops", "learning", "hands-on"],
       "link": "https://github.com/ComBuildersES/communities-directory"
@@ -40,7 +40,7 @@
         "en": "Podcasts and videos to learn more about the people who make up Community Builders and the communities they represent.",
         "es": "Podcast y vídeos para conocer mejor a las personas que forman Community Builders y las comunidades a las que representan."
       },
-      "image": "/images/we-chat-with-community-builders.jpg",
+      "image": "./images/we-chat-with-community-builders.jpg",
       "category": "community",
       "tags": ["mentorship", "growth", "knowledge-sharing"],
       "link": "https://github.com/ComBuildersES/charlamos-con-community-builders"
@@ -55,7 +55,7 @@
         "en": "Compilation of useful resources for people who manage communities (e.g., tools for managing tickets, social media, receiving funding, shared calendars, etc.).",
         "es": "Recopilación de recursos útiles para personas que gestionan comunidades (ej: herramientas para gestionar tickets, redes sociales, recibir financiación, calendarios compartidos, ...)."
       },
-      "image": "/images/awesome-list.jpg",
+      "image": "./images/awesome-list.jpg",
       "category": "innovation",
       "tags": ["innovation", "experimentation", "poc"],
       "link": "https://github.com/ComBuildersES/awesome-community-builders"
@@ -70,7 +70,7 @@
         "en": "Compilation of over 20 different event dynamics: open space, coding dojo, peer reviews, round tables, pizza nights, AMA, etc.",
         "es": "Recopilación con +20 diferentes dinámicas de eventos: open space, coding dojo, peer reviews, mesas redondas, pizza nights, AMA, etc."
       },
-      "image": "/images/event-formats.jpg",
+      "image": "./images/event-formats.jpg",
       "category": "innovation",
       "tags": ["innovation", "experimentation", "poc"],
       "link": "https://github.com/ComBuildersES/formatos-para-eventos"
@@ -85,7 +85,7 @@
         "en": "Survey and results (open access) to find out how best to reach the target audience of technology communities.",
         "es": "Encuesta y resultados (en abierto) para saber cómo llegar mejor al público objetivo de las comunidades tecnológicas."
       },
-      "image": "/images/survey-of-potential-audience.jpg",
+      "image": "./images/survey-of-potential-audience.jpg",
       "category": "innovation",
       "tags": ["innovation", "experimentation", "poc"],
       "link": "https://github.com/ComBuildersES/estudio-publico-objetivo"
